@@ -1,1 +1,14 @@
 #!/usr/bin/env bash
+
+BUCKET_NAME=$1 ## I created a varaible for bucket name, so the $1 means the first input i pass as the variable 
+
+aws s3api create-bucket \
+  --bucket "$BUCKET_NAME" \
+  --region eu-north-1 \
+  --create-bucket-configuration LocationConstraint=eu-north-1
+
+if [ $? -eq 0 ]; then ##if variable is equals 0 meaning success in Linux
+  echo "Bucket '$BUCKET_NAME' created successfully"
+else
+  echo "Failed to create bucket '$BUCKET_NAME'"
+fi
