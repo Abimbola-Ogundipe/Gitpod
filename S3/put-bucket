@@ -1,1 +1,13 @@
 #!/usr/bin/env bash
+
+BUCKET=$1
+COUNT=$2
+
+[ "$COUNT" -gt 5 ] && echo "Max 5 files only" && exit 1
+
+for i in $(seq 1 "$COUNT"); do
+  FILE="file-$RANDOM.txt"
+  echo "random $RANDOM" > "$FILE"
+
+  aws s3 cp "$FILE" s3://"$BUCKET" && echo "uploaded $FILE"
+done
