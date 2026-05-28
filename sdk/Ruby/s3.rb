@@ -2,7 +2,6 @@ require 'aws-sdk-s3'
 require 'pry'
 require 'securerandom'
 
-
 #first I need to set the environment variable
 bucket_name = ENV['BUCKET_NAME']
 region = 'eu-north-1'
@@ -40,3 +39,9 @@ begin
 rescue => e
   puts "Upload failed: #{e.message}"
 end
+
+
+
+  
+
+
