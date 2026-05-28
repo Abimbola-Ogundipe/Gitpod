@@ -2,14 +2,17 @@ require 'aws-sdk-s3'
 require 'pry'
 require 'securerandom'
 
+
+#first I need to set the environment variable
 bucket_name = ENV['BUCKET_NAME']
+region = 'eu-north-1'
 #puts bucket_name   confirm ruby is working
 
-bucket_name = "my-bucket-#{rand(10000)}"
+bucket_name = "my-bucket-#{rand(10000)}" 
 
-s3 = Aws::S3::Client.new(region: region)  #AWS sdk client configuration, dont need to set credentials because ruby automatically gets that froms the aws Installation
+s3 = Aws::S3::Client.new(region: region)  #AWS sdk client configuration, i dont need to set credentials because ruby automatically gets that froms the aws Installation
 
-# 1. Create bucket
+# This will create bucket
 begin
   s3.create_bucket(
     bucket: bucket_name,
